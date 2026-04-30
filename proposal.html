@@ -7,387 +7,214 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --acc:#3D7A1A;--acc-bg:#EFF7E6;--acc-light:#D8EFC4;
-  --i:#1565C0;--i-bg:#E8F1FD;
-  --y:#0A6E4E;--y-bg:#E5F5EF;
-  --m:#B05000;--m-bg:#FEF0E2;
-  --rd:#C62828;--pu:#5C35A0;
+  --acc:#3B7A18;--acc-bg:#EEF7E4;
+  --i:#1558B0;--i-bg:#E7F0FC;
+  --y:#0A6B4A;--y-bg:#E4F4EE;
+  --m:#A84E00;--m-bg:#FEF0E2;
+  --rd:#B91C1C;--pu:#5B21B6;
   --tx:#111827;--sub:#4B5563;--hint:#9CA3AF;
-  --bd:#E5E7EB;--bg:#F9FAFB;--wh:#FFFFFF;
+  --bd:#E5E7EB;--bg:#F9FAFB;--wh:#fff;
 }
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',system-ui,sans-serif;font-size:14px;line-height:1.65}
+body{background:var(--wh);color:var(--tx);font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',system-ui,sans-serif;font-size:14px;line-height:1.65;max-width:780px;margin:0 auto;padding:2.8rem 2rem 4rem}
 
-nav{position:sticky;top:0;z-index:99;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--bd);padding:.5rem 2rem;display:flex;align-items:center;gap:1.2rem}
-.logo{font-size:.75rem;font-weight:700;color:var(--acc);margin-right:auto}
-nav a{font-size:.72rem;color:var(--hint);text-decoration:none;white-space:nowrap;transition:color .15s}
-nav a:hover{color:var(--acc)}
-
-.hero{background:var(--wh);border-bottom:1px solid var(--bd);padding:2.6rem 2.2rem 2.2rem}
-.hero-inner{max-width:840px;margin:0 auto}
-.badge{display:inline-block;background:var(--acc-bg);color:var(--acc);font-size:.65rem;font-weight:700;letter-spacing:.12em;padding:.2rem .65rem;border-radius:50px;margin-bottom:.85rem;text-transform:uppercase}
-h1{font-size:1.85rem;font-weight:700;letter-spacing:-.03em;line-height:1.22;margin-bottom:.5rem}
+/* 헤더 */
+.top-badge{display:inline-block;background:var(--acc-bg);color:var(--acc);font-size:.65rem;font-weight:700;letter-spacing:.12em;padding:.2rem .65rem;border-radius:50px;margin-bottom:.8rem;text-transform:uppercase}
+h1{font-size:1.75rem;font-weight:700;letter-spacing:-.03em;line-height:1.22;margin-bottom:.45rem}
 h1 span{color:var(--acc)}
-.hero-sub{font-size:.84rem;color:var(--sub);margin-bottom:1.3rem;max-width:500px}
-.chips{display:flex;gap:.45rem;flex-wrap:wrap}
-.chip{display:flex;align-items:center;gap:.3rem;background:var(--bg);border:1px solid var(--bd);border-radius:50px;padding:.25rem .7rem;font-size:.7rem;font-weight:600;color:var(--sub)}
+.hero-desc{font-size:.85rem;color:var(--sub);margin-bottom:1rem}
+.nodes{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.2rem;padding-bottom:1.6rem;border-bottom:1px solid var(--bd)}
+.node{display:flex;align-items:center;gap:.3rem;background:var(--bg);border:1px solid var(--bd);border-radius:50px;padding:.22rem .65rem;font-size:.7rem;font-weight:600;color:var(--sub)}
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 
-.wrap{max-width:840px;margin:0 auto;padding:2.2rem}
-section+section{border-top:1px solid var(--bd)}
+/* 섹션 */
+.sec{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--bd)}
+.sec:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.sec-label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--hint);margin-bottom:.35rem}
+h2{font-size:1rem;font-weight:700;margin-bottom:.9rem}
 
-.ey{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hint);margin-bottom:.3rem}
-h2{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.25rem}
-.sdesc{font-size:.8rem;color:var(--sub);margin-bottom:1.5rem}
+/* 테이블형 요약 */
+.rows{display:flex;flex-direction:column;gap:.5rem}
+.row{display:flex;gap:1rem;align-items:flex-start}
+.row-label{font-size:.75rem;font-weight:700;color:var(--sub);min-width:90px;padding-top:.05rem;flex-shrink:0}
+.row-val{font-size:.82rem;color:var(--tx);line-height:1.6}
+.row-val b{color:var(--acc)}
 
-/* 공통 카드 */
-.card{background:var(--wh);border:1px solid var(--bd);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+/* 컬럼 그리드 */
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.col{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:.75rem}
+.col-title{font-size:.75rem;font-weight:700;margin-bottom:.3rem}
+.col-body{font-size:.76rem;color:var(--sub);line-height:1.6}
+.tag{display:inline-block;border-radius:3px;padding:.1rem .35rem;font-size:.62rem;font-weight:700;color:#fff;margin-right:.2rem}
 
-/* 플랫폼 */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem}
-.pt{padding:.4rem .8rem;font-size:.67rem;font-weight:700;color:#fff}
-.pb{padding:.7rem .8rem}
-.pn{font-size:.9rem;font-weight:700;margin-bottom:.18rem}
-.pd{font-size:.74rem;color:var(--sub);line-height:1.55}
-
-/* 한계 */
-.lg{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.li{background:var(--wh);border:1px solid var(--bd);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.li-ico{padding:.85rem;text-align:center;font-size:1.45rem;border-bottom:1px solid var(--bd)}
-.li-body{padding:.8rem}
-.li-num{font-size:.66rem;font-weight:700;letter-spacing:.06em;margin-bottom:.28rem;text-transform:uppercase}
-.li-t{font-size:.88rem;font-weight:700;margin-bottom:.4rem;line-height:1.38}
-.li-d{font-size:.76rem;color:var(--sub);line-height:1.65}
-.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:.7rem}
-.sb{background:var(--bg);border-radius:5px;padding:.4rem .55rem;border:1px solid var(--bd)}
-.sn{font-size:.68rem;font-weight:700;margin-bottom:.18rem}
-.sf{font-size:.64rem;font-family:monospace;color:var(--sub);line-height:1.75}
-.sm{color:var(--hint);font-style:italic}
-
-/* 배너 */
-.bn{border-radius:8px;padding:.7rem .95rem;margin-bottom:1.3rem;border-left:3px solid}
-.bn-l{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.18rem}
-.bn-t{font-size:.83rem;line-height:1.6}
-
-/* G1 */
-.g1g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.g1c{background:var(--wh);border:1px solid var(--bd);border-radius:10px;padding:.85rem;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.g1n{font-size:.86rem;font-weight:700;margin-bottom:.1rem}
-.g1u{font-size:.7rem;margin-bottom:.62rem;padding-bottom:.48rem;border-bottom:1px solid var(--bd)}
-.uf{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-bottom:.65rem}
-.us{border-radius:50px;padding:.12rem .46rem;font-size:.62rem;font-weight:700;color:#fff}
-.ua{font-size:.62rem;color:var(--hint)}
-.vi{display:flex;gap:.45rem;margin-bottom:.55rem;align-items:flex-start}
-.vt{border-radius:3px;padding:.09rem .33rem;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:3px}
-.vn{font-size:.8rem;font-weight:700;margin-bottom:.07rem}
-.vd{font-size:.71rem;color:var(--sub);line-height:1.5}
-
-/* G 섹션 헤더 */
-.gh{display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem}
-.gbg{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0}
-.gt{font-size:.9rem;font-weight:700}
-.gs{font-size:.72rem;color:var(--hint)}
-.gsec{margin-bottom:1.4rem}
-
-/* 아이콘 그리드 */
-.i4{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
-.ic{background:var(--wh);border:1px solid var(--bd);border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.ia{text-align:center;padding:.7rem 0;font-size:1.35rem;background:var(--bg);border-bottom:1px solid var(--bd)}
-.ib{padding:.52rem .6rem}
-.in{font-size:.75rem;font-weight:700;margin-bottom:.16rem;line-height:1.35}
-.id{font-size:.69rem;color:var(--sub);line-height:1.5}
-
-/* DCAT */
-.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.dc{background:var(--wh);border:1px solid var(--bd);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.dh{padding:.44rem .8rem;font-size:.7rem;font-weight:700;color:#fff}
-.db{padding:.75rem .8rem}
-.dds{font-size:.7rem;color:var(--sub);font-style:italic;margin-bottom:.52rem}
-.dtg{display:flex;gap:.26rem;margin-bottom:.42rem}
-.dtag{border-radius:3px;padding:.1rem .38rem;font-size:.64rem;font-weight:700;color:#fff}
-.dg1{font-size:.68rem;margin-bottom:.48rem;padding-bottom:.42rem;border-bottom:1px solid var(--bd)}
-.dlbl{font-size:.65rem;font-weight:700;letter-spacing:.06em;margin:.32rem 0 .18rem;color:var(--hint);text-transform:uppercase}
-.bbg{background:var(--bg);border-radius:3px;height:5px;overflow:hidden;border:1px solid var(--bd);margin-bottom:.22rem}
-.bf{height:100%;border-radius:3px}
-.dn{font-size:.74rem;color:var(--sub);line-height:1.6}
-.ds{font-size:.7rem;color:var(--hint);margin-top:.32rem;line-height:1.5}
-
-/* FL 다이어그램 */
-.fld{background:var(--wh);border:1px solid var(--bd);border-radius:10px;padding:1.4rem;text-align:center;margin-bottom:1.4rem;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.flsv{display:inline-flex;align-items:center;gap:.35rem;background:var(--acc-bg);border:1.5px solid var(--acc);border-radius:7px;padding:.45rem 1.4rem;font-size:.82rem;font-weight:700;color:var(--acc);margin-bottom:.5rem}
-.flm{font-size:.7rem;color:var(--hint);margin-bottom:.5rem;display:flex;justify-content:center;gap:1.2rem}
-.flm span:last-child{color:var(--acc);font-weight:700}
-.fln{display:flex;justify-content:center;gap:.8rem}
-.fnode{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;text-align:center;line-height:1.3}
+/* 변수 그룹 */
+.gvar{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.55rem}
+.gbadge{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
+.ginfo .gtitle{font-size:.85rem;font-weight:700;margin-bottom:.12rem}
+.ginfo .gsub{font-size:.76rem;color:var(--sub)}
 
 /* 5단계 */
-.s5{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:1.3rem}
-.s5c{background:var(--wh);border:1px solid var(--bd);border-radius:8px;padding:.7rem .55rem;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.s5n{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.67rem;font-weight:700;color:#fff;margin:0 auto .38rem}
-.s5t{font-size:.73rem;font-weight:700;margin-bottom:.16rem;line-height:1.32}
-.s5d{font-size:.66rem;color:var(--sub);line-height:1.44}
+.steps{display:flex;gap:.5rem;margin-top:.5rem}
+.step{flex:1;background:var(--bg);border:1px solid var(--bd);border-top:2.5px solid;border-radius:7px;padding:.6rem .55rem;text-align:center}
+.snum{font-size:.65rem;font-weight:700;margin-bottom:.18rem}
+.stitle{font-size:.73rem;font-weight:700;color:var(--tx);margin-bottom:.12rem}
+.sdesc{font-size:.67rem;color:var(--sub);line-height:1.4}
 
-/* 기대효과 흐름 */
-.ef{display:flex;flex-direction:column;gap:1.1rem}
-.efr{display:flex;gap:.8rem}
-.efd{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px}
-.efc{}
-.efl{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.22rem}
-.eft{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.efb{font-size:.78rem;color:var(--sub);line-height:1.65}
-.efc3{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.65rem}
-.ec{background:var(--bg);border-radius:6px;border-left:3px solid;padding:.45rem .65rem}
-.ect{font-size:.73rem;font-weight:700;margin-bottom:.1rem}
-.ecd{font-size:.68rem;color:var(--sub);line-height:1.44}
-.favg{border-radius:7px;padding:.5rem .95rem;text-align:center;font-size:.79rem;font-weight:700;margin:.85rem 0;border:1px solid}
-
-/* 효과 4개 */
-.e4{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:.35rem}
-.e4c{background:var(--wh);border:1px solid var(--bd);border-radius:9px;display:flex;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.e4i{width:50px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.28rem;border-right:1px solid var(--bd)}
-.e4b{padding:.75rem}
-.e4t{font-size:.86rem;font-weight:700;margin-bottom:.32rem;display:flex;align-items:center;gap:.4rem}
-.e4n{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:#fff;flex-shrink:0}
-.e4d{font-size:.76rem;color:var(--sub);line-height:1.65}
+/* 기대효과 */
+.eff4{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:.5rem}
+.ec{background:var(--bg);border:1px solid var(--bd);border-radius:7px;padding:.7rem}
+.ec-title{font-size:.8rem;font-weight:700;margin-bottom:.2rem;display:flex;align-items:center;gap:.4rem}
+.enum{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:#fff;flex-shrink:0}
+.ec-body{font-size:.74rem;color:var(--sub);line-height:1.55}
 
 /* 비교표 */
-.cmp{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.95rem}
-.cmp th,.cmp td{padding:.52rem .7rem;text-align:left;border-bottom:1px solid var(--bd)}
-.cmp thead th{font-size:.67rem;font-weight:700;color:var(--hint);letter-spacing:.07em;border-bottom:2px solid var(--bd);text-transform:uppercase}
+.cmp{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.5rem}
+.cmp th,.cmp td{padding:.48rem .65rem;text-align:left;border-bottom:1px solid var(--bd)}
+.cmp thead th{font-size:.66rem;font-weight:700;color:var(--hint);letter-spacing:.07em;border-bottom:2px solid var(--bd);text-transform:uppercase}
 .ca{background:var(--acc-bg)}
 .ca th{color:var(--acc)}
-.cmp .rl{font-weight:700}
+.rl{font-weight:700}
 .cmp tr:hover td{background:#f9fafb}
 .ck{color:var(--acc);font-weight:700}
 .cx{color:var(--rd)}
 
 /* 하이라이트 */
-.hl{border-left:3px solid var(--acc);background:var(--acc-bg);border-radius:0 7px 7px 0;padding:.65rem .95rem;margin-top:1.1rem;font-size:.8rem;color:var(--sub);line-height:1.7}
+.hl{border-left:3px solid var(--acc);background:var(--acc-bg);border-radius:0 6px 6px 0;padding:.6rem .9rem;font-size:.8rem;color:var(--sub);line-height:1.65;margin-top:1rem}
 .hl b{color:var(--acc)}
 
-footer{text-align:center;padding:1.4rem;font-size:.69rem;color:var(--hint);border-top:1px solid var(--bd);background:var(--wh)}
-
-@media(max-width:560px){
-  .pg,.lg,.g1g,.dg,.i4,.s5,.e4,.efc3{grid-template-columns:1fr}
-  .wrap,.hero{padding:1.6rem 1.1rem}
-  nav{gap:.7rem}
+@media(max-width:520px){
+  .cols3,.eff4{grid-template-columns:1fr}
+  .steps{flex-direction:column}
+  body{padding:1.6rem 1rem 3rem}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <span class="logo">🎫 연합학습 기획안</span>
-  <a href="#s1">참여 주체</a>
-  <a href="#s2">변수 설계</a>
-  <a href="#s3">DCAT</a>
-  <a href="#s4">학습 프로세스</a>
-  <a href="#s5">기대 효과</a>
-</nav>
+<div class="top-badge">Federated Learning Scenario</div>
+<h1>온라인 티켓 플랫폼<br><span>암표 봇 탐지 AI</span></h1>
+<p class="hero-desc">인터파크티켓 · YES24 공연 · 멜론티켓 — 데이터 공유 없이 세 플랫폼이 함께 학습하는 연합학습(FL) 시나리오</p>
+<div class="nodes">
+  <div class="node"><div class="dot" style="background:var(--i)"></div>Node 1 · 인터파크티켓</div>
+  <div class="node"><div class="dot" style="background:var(--y)"></div>Node 2 · YES24 공연</div>
+  <div class="node"><div class="dot" style="background:var(--m)"></div>Node 3 · 멜론티켓</div>
+</div>
 
-<div class="hero">
-  <div class="hero-inner">
-    <div class="badge">Federated Learning Scenario</div>
-    <h1>온라인 티켓 플랫폼<br><span>암표 봇 탐지 AI</span></h1>
-    <p class="hero-sub">인터파크티켓 · YES24 공연 · 멜론티켓 — 데이터 공유 없이 세 플랫폼이 함께 학습하는 연합학습(FL) 시나리오 설계</p>
-    <div class="chips">
-      <div class="chip"><div class="dot" style="background:var(--i)"></div>Node 1 · 인터파크티켓</div>
-      <div class="chip"><div class="dot" style="background:var(--y)"></div>Node 2 · YES24 공연</div>
-      <div class="chip"><div class="dot" style="background:var(--m)"></div>Node 3 · 멜론티켓</div>
+<!-- 01 참여 주체 -->
+<div class="sec">
+  <div class="sec-label">Step 01</div>
+  <h2>참여 주체 및 한계점</h2>
+  <div class="cols3">
+    <div class="col"><div class="col-title" style="color:var(--i)">인터파크티켓</div><div class="col-body">K-pop·스포츠 위주<br>팝업창 기반 좌석 직접 선택</div></div>
+    <div class="col"><div class="col-title" style="color:var(--y)">YES24 공연</div><div class="col-body">뮤지컬·클래식 위주<br>대기열 번호 발급 후 등급 선택</div></div>
+    <div class="col"><div class="col-title" style="color:var(--m)">멜론티켓</div><div class="col-body">스트리밍 연계 공연 예매<br>카운트다운 자동전환·CAPTCHA</div></div>
+  </div>
+  <div style="margin-top:.75rem" class="rows">
+    <div class="row"><div class="row-label">🔐 한계 1</div><div class="row-val">직접 경쟁 관계 — 예매 행동 데이터는 핵심 영업기밀, 타사 공유 구조적 불가</div></div>
+    <div class="row"><div class="row-label">⚖️ 한계 2</div><div class="row-val">개인정보보호법 — 회원 예매 이력·계정 정보는 민감 개인정보, 제3자 이전 불가</div></div>
+    <div class="row"><div class="row-label">🔧 한계 3</div><div class="row-val">스키마 구조 차이 — 컬럼 구조가 달라 원본 통합 시 충돌. <b>연합학습은 가중치만 공유하므로 우회 가능</b></div></div>
+  </div>
+</div>
+
+<!-- 02 변수 설계 -->
+<div class="sec">
+  <div class="sec-label">Step 02</div>
+  <h2>예측 목표 및 변수 설계</h2>
+  <div class="row" style="margin-bottom:1rem">
+    <div class="row-label">예측 목표</div>
+    <div class="row-val">특정 예매 건이 봇·매크로에 의한 비정상 예매인지 여부 → <b>이진 분류 (0: 정상 / 1: 봇)</b></div>
+  </div>
+  <div class="gvar">
+    <div class="gbadge" style="background:var(--i)">G1</div>
+    <div class="ginfo">
+      <div class="gtitle">예매 행동 패턴 <span style="font-size:.7rem;font-weight:400;color:var(--hint)">— 플랫폼별 UX가 달라 수집 변수가 다름</span></div>
+      <div class="gsub">
+        <span class="tag" style="background:var(--i)">인터파크</span>팝업창 진입 속도 · 좌석 클릭 패턴 · 좌석 변경 횟수<br>
+        <span class="tag" style="background:var(--y);margin-top:.25rem">YES24</span>대기열 진입 타이밍 · 등급 선택 체류 시간 · 등급 변경 횟수<br>
+        <span class="tag" style="background:var(--m);margin-top:.25rem">멜론</span>예매버튼 반응 시간 · 보안문자 입력 속도 · 5분 내 결제 완료율
+      </div>
+    </div>
+  </div>
+  <div class="gvar">
+    <div class="gbadge" style="background:var(--y)">G2</div>
+    <div class="ginfo">
+      <div class="gtitle">계정 이력 <span style="font-size:.7rem;font-weight:400;color:var(--hint)">— 3개 플랫폼 공통</span></div>
+      <div class="gsub">최근 30일 예매 취소율 · 동일 공연 중복 시도 횟수 · 계정 생성일 · 결제 수단 다양성</div>
+    </div>
+  </div>
+  <div class="gvar">
+    <div class="gbadge" style="background:var(--m)">G3</div>
+    <div class="ginfo">
+      <div class="gtitle">공연 맥락·인기도 <span style="font-size:.7rem;font-weight:400;color:var(--hint)">— 3개 플랫폼 공통</span></div>
+      <div class="gsub">아티스트 SNS 언급량 · 티켓 예상 매진 시간 · 티켓 가격 · 공연 장르</div>
     </div>
   </div>
 </div>
 
-<!-- STEP 01 -->
-<section id="s1"><div class="wrap">
-  <div class="ey">Step 01</div>
-  <h2>참여 주체와 한계점 정의</h2>
-  <p class="sdesc">누가 데이터를 가지고 있고, 왜 한곳에 모으는 것이 현실적으로 불가능한지 설명합니다.</p>
-
-  <div class="pg">
-    <div class="card"><div class="pt" style="background:var(--i)">Node 1</div><div class="pb"><div class="pn" style="color:var(--i)">인터파크티켓</div><div class="pd">K-pop 콘서트·스포츠 이벤트 위주. 팝업창 기반 좌석 직접 선택 방식.</div></div></div>
-    <div class="card"><div class="pt" style="background:var(--y)">Node 2</div><div class="pb"><div class="pn" style="color:var(--y)">YES24 공연</div><div class="pd">뮤지컬·클래식·연극 고가 공연 위주. 대기열 번호 발급 후 등급 선택 방식.</div></div></div>
-    <div class="card"><div class="pt" style="background:var(--m)">Node 3</div><div class="pb"><div class="pn" style="color:var(--m)">멜론티켓</div><div class="pd">음원 스트리밍 연계 공연 예매. 카운트다운 자동전환·보안문자(CAPTCHA) 방식.</div></div></div>
-  </div>
-
-  <div class="lg">
-    <div class="li"><div class="li-ico" style="background:#fff4f4">🔐</div><div class="li-body"><div class="li-num" style="color:var(--rd)">한계 1</div><div class="li-t">직접 경쟁 관계 → 영업기밀</div><div class="li-d">세 플랫폼은 서로 직접 경쟁 관계다. 예매 행동 데이터(어떤 팬이 몇 초에 예매하는지, 취소율 등)는 핵심 영업기밀이어서 타사에 제공하는 것이 구조적으로 불가능하다.</div></div></div>
-    <div class="li"><div class="li-ico" style="background:#fff8ee">⚖️</div><div class="li-body"><div class="li-num" style="color:var(--m)">한계 2</div><div class="li-t">개인정보보호법</div><div class="li-d">회원의 예매 이력·클릭 패턴·계정 정보는 개인정보보호법상 민감 개인정보다. 제3자 서버로 이전하려면 별도 동의와 법적 절차가 필요해 현실적으로 불가능하다.</div></div></div>
-    <div class="li"><div class="li-ico" style="background:#eef3ff">🔧</div><div class="li-body"><div class="li-num" style="color:var(--i)">한계 3</div><div class="li-t">스키마 구조 차이 → 연합학습이 해답</div><div class="li-d">각 플랫폼의 데이터 컬럼 구조가 달라 원본 통합 시 구조 충돌 발생. 연합학습은 가중치만 공유하므로 스키마가 달라도 우회 가능하다.</div>
-      <div class="sg">
-        <div class="sb"><div class="sn" style="color:var(--i)">인터파크</div><div class="sf">popup_entry_ms</div><div class="sf">seat_click_path</div><div class="sf sm">(queue 없음)</div></div>
-        <div class="sb"><div class="sn" style="color:var(--y)">YES24</div><div class="sf">queue_entry_ms</div><div class="sf">grade_dwell_ms</div><div class="sf sm">(captcha 없음)</div></div>
-        <div class="sb"><div class="sn" style="color:var(--m)">멜론</div><div class="sf">btn_reaction_ms</div><div class="sf">captcha_solve_ms</div><div class="sf sm">(seat_path 없음)</div></div>
-      </div>
-    </div></div>
-  </div>
-
-  <div class="hl">세 가지 한계점은 각각 <b>영업적·법적·기술적</b>으로 "데이터는 제자리에 두고, 가중치만 공유"하는 연합학습의 필요성을 뒷받침한다.</div>
-</div></section>
-
-<!-- STEP 02 -->
-<section id="s2"><div class="wrap">
-  <div class="ey">Step 02</div>
-  <h2>예측 목표와 변수 설계</h2>
-  <p class="sdesc">AI 모델이 맞추고자 하는 '결과'와 이를 위해 필요한 '힌트'들을 정의합니다.</p>
-
-  <div class="bn" style="background:var(--acc-bg);border-color:var(--acc)">
-    <div class="bn-l" style="color:var(--acc)">예측 목표</div>
-    <div class="bn-t">특정 예매 건이 암표 재판매 목적 봇·매크로에 의한 비정상 예매인지 여부 → <strong style="color:var(--acc)">이진 분류 (0: 정상 예매 / 1: 봇 예매)</strong></div>
-  </div>
-
-  <div class="gsec">
-    <div class="gh"><div class="gbg" style="background:var(--i)">G1</div><div><div class="gt">예매 행동 패턴</div><div class="gs">플랫폼별 예매 UX가 달라 수집 변수가 다름 — 봇 이상 징후가 가장 뚜렷하게 나타남</div></div></div>
-    <div class="g1g">
-      <div class="g1c">
-        <div class="g1n" style="color:var(--i)">인터파크티켓</div>
-        <div class="g1u" style="color:var(--i)">팝업창 기반 좌석 직접 클릭</div>
-        <div class="uf"><span class="us" style="background:var(--i)">공연 선택</span><span class="ua">›</span><span class="us" style="background:var(--i)">팝업 진입</span><span class="ua">›</span><span class="us" style="background:var(--i)">좌석 클릭</span><span class="ua">›</span><span class="us" style="background:var(--i)">결제</span></div>
-        <div class="vi"><span class="vt" style="background:var(--i)">G1-A</span><div><div class="vn">팝업창 진입 속도</div><div class="vd">오픈~팝업까지 ms. 봇은 수백ms 이내 자동 진입.</div></div></div>
-        <div class="vi"><span class="vt" style="background:var(--i)">G1-B</span><div><div class="vn">좌석 클릭 패턴</div><div class="vd">도면 내 클릭 경로·속도. 봇은 특정 구역 반복 클릭.</div></div></div>
-        <div class="vi"><span class="vt" style="background:var(--i)">G1-C</span><div><div class="vn">좌석 변경 횟수</div><div class="vd">재선택 횟수. 봇은 스캔하듯 반복 변경.</div></div></div>
-      </div>
-      <div class="g1c">
-        <div class="g1n" style="color:var(--y)">YES24 공연</div>
-        <div class="g1u" style="color:var(--y)">대기열 번호 발급 → 등급 선택</div>
-        <div class="uf"><span class="us" style="background:var(--y)">공연 선택</span><span class="ua">›</span><span class="us" style="background:var(--y)">대기열 발급</span><span class="ua">›</span><span class="us" style="background:var(--y)">등급 선택</span><span class="ua">›</span><span class="us" style="background:var(--y)">결제</span></div>
-        <div class="vi"><span class="vt" style="background:var(--y)">G1-A</span><div><div class="vn">대기열 진입 타이밍</div><div class="vd">오픈 대비 진입 시간. 봇은 오픈 직전 자동 진입.</div></div></div>
-        <div class="vi"><span class="vt" style="background:var(--y)">G1-B</span><div><div class="vn">등급 선택 체류 시간</div><div class="vd">VIP·R·S 화면 체류. 봇은 0ms대 즉시 선택.</div></div></div>
-        <div class="vi"><span class="vt" style="background:var(--y)">G1-C</span><div><div class="vn">등급 변경 횟수</div><div class="vd">재선택 수. 봇은 즉각 차선 등급 전환.</div></div></div>
-      </div>
-      <div class="g1c">
-        <div class="g1n" style="color:var(--m)">멜론티켓</div>
-        <div class="g1u" style="color:var(--m)">카운트다운 자동전환·보안문자</div>
-        <div class="uf"><span class="us" style="background:var(--m)">공연 선택</span><span class="ua">›</span><span class="us" style="background:var(--m)">카운트다운</span><span class="ua">›</span><span class="us" style="background:var(--m)">CAPTCHA</span><span class="ua">›</span><span class="us" style="background:var(--m)">결제</span></div>
-        <div class="vi"><span class="vt" style="background:var(--m)">G1-A</span><div><div class="vn">예매버튼 반응 시간</div><div class="vd">활성화~클릭 ms. 봇은 0~10ms 자동 클릭.</div></div></div>
-        <div class="vi"><span class="vt" style="background:var(--m)">G1-B</span><div><div class="vn">보안문자 입력 속도</div><div class="vd">CAPTCHA 완료. 사람 3~10초, 봇은 즉각 처리.</div></div></div>
-        <div class="vi"><span class="vt" style="background:var(--m)">G1-C</span><div><div class="vn">5분 내 결제 완료율</div><div class="vd">선점 후 결제. 봇은 자동 결제로 거의 100%.</div></div></div>
-      </div>
+<!-- 03 DCAT -->
+<div class="sec">
+  <div class="sec-label">Step 03</div>
+  <h2>노드별 데이터셋 구성 (DCAT)</h2>
+  <div class="cols3">
+    <div class="col">
+      <div class="col-title" style="color:var(--i)">노드 1 — 인터파크</div>
+      <div class="col-body">K-pop 콘서트·스포츠 예매 행동 데이터셋<br><br><span style="color:var(--hint);font-size:.7rem">Non-IID:</span> 팬덤 집중 트래픽, 밀리초 단위 매크로 지배적</div>
+    </div>
+    <div class="col">
+      <div class="col-title" style="color:var(--y)">노드 2 — YES24</div>
+      <div class="col-body">뮤지컬·클래식 예매 및 계정 이력 종합 데이터셋<br><br><span style="color:var(--hint);font-size:.7rem">Non-IID:</span> 고가 티켓 위주, 대기열 기반 봇 패턴 특화</div>
+    </div>
+    <div class="col">
+      <div class="col-title" style="color:var(--m)">노드 3 — 멜론</div>
+      <div class="col-body">음원 스트리밍 연계 공연 예매 데이터셋<br><br><span style="color:var(--hint);font-size:.7rem">Non-IID:</span> 버튼 반응 시간 분포가 타 플랫폼과 완전히 다름</div>
     </div>
   </div>
+  <div class="hl"><b>Non-IID 종합:</b> 장르·팬층이 달라 봇 패턴 분포가 다름. 연합학습으로 합쳐야 범용 탐지 모델 완성.</div>
+</div>
 
-  <div class="gsec">
-    <div class="gh"><div class="gbg" style="background:var(--y)">G2</div><div><div class="gt">계정 이력</div><div class="gs">3개 플랫폼 공통 — 봇 계정은 신규 생성·단기 사용 패턴이 뚜렷</div></div></div>
-    <div class="i4">
-      <div class="ic"><div class="ia">📊</div><div class="ib"><div class="in">최근 30일 예매 취소율</div><div class="id">봇은 결제 후 취소 반복 또는 대량 취소 패턴</div></div></div>
-      <div class="ic"><div class="ia">🔄</div><div class="ib"><div class="in">동일 공연 중복 시도 횟수</div><div class="id">같은 공연 반복 접근. 봇은 실패 시 즉각 재시도</div></div></div>
-      <div class="ic"><div class="ia">📅</div><div class="ib"><div class="in">계정 생성일</div><div class="id">봇은 예매 오픈 직전 생성된 신규 계정 다수 사용</div></div></div>
-      <div class="ic"><div class="ia">💳</div><div class="ib"><div class="in">결제 수단 다양성</div><div class="id">봇은 자동화된 단일 결제 수단만 반복 사용</div></div></div>
-    </div>
+<!-- 04 학습 프로세스 -->
+<div class="sec">
+  <div class="sec-label">Step 04</div>
+  <h2>학습 시나리오 및 글로벌 모델</h2>
+  <div class="row" style="margin-bottom:.6rem">
+    <div class="row-label">핵심 원리</div>
+    <div class="row-val">데이터는 각 플랫폼 서버에 그대로 두고, 학습된 <b>가중치(패턴 요약본)만</b> 중앙 서버로 전송 → FedAvg 알고리즘으로 병합 → 글로벌 모델 완성</div>
   </div>
-
-  <div class="gsec">
-    <div class="gh"><div class="gbg" style="background:var(--m)">G3</div><div><div class="gt">공연 맥락·인기도</div><div class="gs">3개 플랫폼 공통 — 봇은 인기 공연·고가 티켓에 집중</div></div></div>
-    <div class="i4">
-      <div class="ic"><div class="ia">📱</div><div class="ib"><div class="in">아티스트 SNS 언급량</div><div class="id">버즈량 높을수록 봇 유입 가능성 높음</div></div></div>
-      <div class="ic"><div class="ia">⏱️</div><div class="ib"><div class="in">티켓 예상 매진 시간</div><div class="id">매진 빠를수록 차익 크므로 봇 집중도 높음</div></div></div>
-      <div class="ic"><div class="ia">💰</div><div class="ib"><div class="in">티켓 가격</div><div class="id">고가 티켓일수록 봇 유인과 강한 양의 상관관계</div></div></div>
-      <div class="ic"><div class="ia">🎭</div><div class="ib"><div class="in">공연 장르</div><div class="id">K-pop·뮤지컬 등 장르별로 봇 패턴이 다름</div></div></div>
-    </div>
+  <div class="steps">
+    <div class="step" style="border-top-color:var(--i)"><div class="snum" style="color:var(--i)">1</div><div class="stitle">서버 선정</div><div class="sdesc">DCAT로 3개 플랫폼 노드 선정</div></div>
+    <div class="step" style="border-top-color:var(--y)"><div class="snum" style="color:var(--y)">2</div><div class="stitle">모델 배포</div><div class="sdesc">초기 모델을 각 플랫폼에 배포</div></div>
+    <div class="step" style="border-top-color:var(--m)"><div class="snum" style="color:var(--m)">3</div><div class="stitle">로컬 학습</div><div class="sdesc">자사 데이터로 학습, 원본 미전송</div></div>
+    <div class="step" style="border-top-color:var(--pu)"><div class="snum" style="color:var(--pu)">4</div><div class="stitle">가중치 업로드</div><div class="sdesc">가중치만 중앙 서버 전송</div></div>
+    <div class="step" style="border-top-color:var(--acc)"><div class="snum" style="color:var(--acc)">5</div><div class="stitle">FedAvg 집계</div><div class="sdesc">병합 → 글로벌 모델 완성</div></div>
   </div>
-</div></section>
+</div>
 
-<!-- STEP 03 -->
-<section id="s3"><div class="wrap">
-  <div class="ey">Step 03</div>
-  <h2>참여 노드별 데이터셋(DCAT) 구성</h2>
-  <p class="sdesc">3개 플랫폼 노드별 데이터셋 구성을 요약하고, Non-IID 특성을 설명합니다.</p>
-
-  <div class="dg">
-    <div class="dc"><div class="dh" style="background:var(--i)">노드 1 — 인터파크티켓</div><div class="db"><div class="dds">'K-pop 콘서트·스포츠 예매 행동 데이터셋'</div><div class="dtg"><span class="dtag" style="background:var(--i)">G1</span><span class="dtag" style="background:var(--y)">G2</span><span class="dtag" style="background:var(--m)">G3</span></div><div class="dg1" style="color:var(--i)">G1: 팝업창 진입 속도 · 좌석 클릭 패턴 · 좌석 변경 횟수</div><div class="dlbl">봇 패턴 다양성</div><div class="bbg"><div class="bf" style="width:72%;background:var(--i)"></div></div><div class="dn">K-pop 팬덤 집중 트래픽. 밀리초 단위 매크로 패턴 지배적. 스포츠 시즌 편향 존재.</div><div class="ds">샘플: 오픈 직후 수초 내 예매 집중 → 극단적 행동 패턴 분포</div></div></div>
-    <div class="dc"><div class="dh" style="background:var(--y)">노드 2 — YES24 공연</div><div class="db"><div class="dds">'뮤지컬·클래식 예매 및 계정 이력 종합 데이터셋'</div><div class="dtg"><span class="dtag" style="background:var(--i)">G1</span><span class="dtag" style="background:var(--y)">G2</span><span class="dtag" style="background:var(--m)">G3</span></div><div class="dg1" style="color:var(--y)">G1: 대기열 진입 타이밍 · 등급 선택 체류 · 등급 변경 횟수</div><div class="dlbl">봇 패턴 다양성</div><div class="bbg"><div class="bf" style="width:88%;background:var(--y)"></div></div><div class="dn">고가 뮤지컬 티켓 위주. 암표 피해 금액 최대. 대기열 기반 봇 패턴 특화.</div><div class="ds">샘플: 장기 회원 비중 높아 정상·봇 레이블 구분 명확</div></div></div>
-    <div class="dc"><div class="dh" style="background:var(--m)">노드 3 — 멜론티켓</div><div class="db"><div class="dds">'음원 스트리밍 연계 공연 예매 데이터셋'</div><div class="dtg"><span class="dtag" style="background:var(--i)">G1</span><span class="dtag" style="background:var(--y)">G2</span><span class="dtag" style="background:var(--m)">G3</span></div><div class="dg1" style="color:var(--m)">G1: 예매버튼 반응 시간 · 보안문자 입력 속도 · 5분 결제 완료율</div><div class="dlbl">봇 패턴 다양성</div><div class="bbg"><div class="bf" style="width:65%;background:var(--m)"></div></div><div class="dn">카운트다운 방식 → 버튼 반응 시간 분포가 타 플랫폼과 완전히 다름.</div><div class="ds">샘플: CAPTCHA 우회 봇 패턴 특화. 스트리밍 인기지수 기반 봇 집중.</div></div></div>
-  </div>
-
-  <div class="hl"><b>Non-IID 종합:</b> 세 플랫폼 장르·팬층이 달라 봇 패턴 분포가 다름. G1 수집 맥락 자체가 달라 데이터 불균형 두드러짐. 연합학습으로 합쳐야 범용 탐지 모델 완성.</div>
-</div></section>
-
-<!-- STEP 04 -->
-<section id="s4"><div class="wrap">
-  <div class="ey">Step 04</div>
-  <h2>학습 시나리오 상세 묘사 및 글로벌 모델</h2>
-  <p class="sdesc">데이터는 제자리에 있고, 학습된 가중치(비결)만 움직이는 과정과 최종 결과물을 설명합니다.</p>
-
-  <div class="fld">
-    <div style="font-size:.65rem;color:var(--hint);margin-bottom:.65rem;letter-spacing:.1em;text-transform:uppercase">연합학습 구조 다이어그램</div>
-    <div class="flsv">🏛 중앙 서버 (Aggregator)</div>
-    <div class="flm"><span>② 초기 모델 배포 ↓</span><span>④ 가중치만 ↑ 업로드 (원본 데이터 이동 없음)</span></div>
-    <div class="fln">
-      <div class="fnode" style="background:var(--i)">인터파크<br>티켓</div>
-      <div class="fnode" style="background:var(--y)">YES24<br>공연</div>
-      <div class="fnode" style="background:var(--m)">멜론<br>티켓</div>
-    </div>
-  </div>
-
-  <div class="s5">
-    <div class="s5c" style="border-top:2.5px solid var(--i)"><div class="s5n" style="background:var(--i)">1</div><div class="s5t" style="color:var(--i)">중앙 서버 선정</div><div class="s5d">DCAT로 3개 플랫폼 학습 노드 선정</div></div>
-    <div class="s5c" style="border-top:2.5px solid var(--y)"><div class="s5n" style="background:var(--y)">2</div><div class="s5t" style="color:var(--y)">초기 모델 배포</div><div class="s5d">동일 구조 초기 모델을 각 플랫폼에 배포</div></div>
-    <div class="s5c" style="border-top:2.5px solid var(--m)"><div class="s5n" style="background:var(--m)">3</div><div class="s5t" style="color:var(--m)">로컬 학습</div><div class="s5d">자사 데이터로 학습. 원본 외부 미전송</div></div>
-    <div class="s5c" style="border-top:2.5px solid var(--pu)"><div class="s5n" style="background:var(--pu)">4</div><div class="s5t" style="color:var(--pu)">가중치 업로드</div><div class="s5d">학습 결과 요약본 가중치만 중앙 전송</div></div>
-    <div class="s5c" style="border-top:2.5px solid var(--acc)"><div class="s5n" style="background:var(--acc)">5</div><div class="s5t" style="color:var(--acc)">FedAvg 집계</div><div class="s5d">가중치 병합으로 글로벌 모델 완성</div></div>
-  </div>
-</div></section>
-
-<!-- STEP 05 -->
-<section id="s5"><div class="wrap">
-  <div class="ey">Step 05</div>
+<!-- 05 기대효과 -->
+<div class="sec">
+  <div class="sec-label">Step 05</div>
   <h2>기대 효과 및 차별점</h2>
-  <p class="sdesc">이 시나리오로 무엇을 목적으로 학습시켰고, 그 결과 어떤 효과가 나타나는지를 설명합니다.</p>
-
-  <div class="ef">
-    <div class="efr">
-      <div class="efd" style="background:var(--i)">목</div>
-      <div class="efc">
-        <div class="efl" style="color:var(--i)">학습 목적</div>
-        <div class="eft">암표 봇 이진 분류 모델 학습</div>
-        <div class="efb">세 플랫폼이 G1·G2·G3 데이터로 예매 건이 정상인지 봇인지 판별하는 모델을 연합학습 방식으로 훈련. 원본 데이터 공유 없이 자체 학습만 수행.</div>
-      </div>
-    </div>
-    <div class="efr">
-      <div class="efd" style="background:var(--y)">합</div>
-      <div class="efc">
-        <div class="efl" style="color:var(--y)">글로벌 모델 통합</div>
-        <div class="eft">3개 플랫폼의 봇 패턴이 하나의 모델에 통합</div>
-        <div class="efc3">
-          <div class="ec" style="border-color:var(--i)"><div class="ect" style="color:var(--i)">인터파크 학습 결과</div><div class="ecd">K-pop 매크로 탐지 가중치</div></div>
-          <div class="ec" style="border-color:var(--y)"><div class="ect" style="color:var(--y)">YES24 학습 결과</div><div class="ecd">뮤지컬 고가 봇 탐지 가중치</div></div>
-          <div class="ec" style="border-color:var(--m)"><div class="ect" style="color:var(--m)">멜론 학습 결과</div><div class="ecd">CAPTCHA 우회 봇 탐지 가중치</div></div>
-        </div>
-        <div class="favg" style="background:var(--acc-bg);border-color:var(--acc);color:var(--acc)">→ FedAvg 집계 → 전 장르·전 UX 유형을 커버하는 범용 탐지 글로벌 모델 완성</div>
-      </div>
-    </div>
-    <div class="efr">
-      <div class="efd" style="background:var(--acc)">결</div>
-      <div class="efc">
-        <div class="efl" style="color:var(--acc)">4가지 기대 결과</div>
-        <div class="e4">
-          <div class="e4c"><div class="e4i" style="background:var(--i-bg)">🎯</div><div class="e4b"><div class="e4t"><span class="e4n" style="background:var(--i)">①</span>탐지 정확도 향상</div><div class="e4d">단독 모델은 자사 봇만 탐지. 글로벌 모델은 K-pop 매크로·뮤지컬 봇·CAPTCHA 우회 봇 전 유형 학습. 인터파크에서 탐지된 패턴이 YES24·멜론에서도 차단.</div></div></div>
-          <div class="e4c"><div class="e4i" style="background:var(--y-bg)">🛡️</div><div class="e4b"><div class="e4t"><span class="e4n" style="background:var(--y)">②</span>실사용자 보호</div><div class="e4d">예매 오픈 순간부터 이상 행동 패턴을 실시간 감지해 봇 차단. 수 초 만에 전석 매진되는 피해를 방지하고 실제 팬이 정상 예매할 수 있는 환경 조성.</div></div></div>
-          <div class="e4c"><div class="e4i" style="background:var(--m-bg)">🔄</div><div class="e4b"><div class="e4t"><span class="e4n" style="background:var(--m)">③</span>지속 학습·빠른 업데이트</div><div class="e4d">새로운 봇 패턴 탐지 시 로컬 재학습 후 가중치 전송으로 글로벌 모델 빠르게 갱신. 단독 대응보다 훨씬 빠른 업데이트 사이클 가능.</div></div></div>
-          <div class="e4c"><div class="e4i" style="background:var(--acc-bg)">🔒</div><div class="e4b"><div class="e4t"><span class="e4n" style="background:var(--acc)">④</span>데이터 주권 보호</div><div class="e4d">원본 예매 데이터는 각 서버 밖으로 나가지 않아 개인정보 침해 위험 없음. 영업기밀 노출 없이 공동 대응 가능한 유일한 구조.</div></div></div>
-        </div>
-      </div>
-    </div>
+  <div class="eff4">
+    <div class="ec"><div class="ec-title"><span class="enum" style="background:var(--i)">①</span>탐지 정확도 향상</div><div class="ec-body">K-pop 매크로·뮤지컬 봇·CAPTCHA 우회 봇 전 유형 학습. 플랫폼 간 봇 패턴 공유 탐지 가능.</div></div>
+    <div class="ec"><div class="ec-title"><span class="enum" style="background:var(--y)">②</span>실사용자 보호</div><div class="ec-body">오픈 순간부터 이상 행동을 실시간 감지해 봇 차단. 수 초 만에 전석 매진 피해 방지.</div></div>
+    <div class="ec"><div class="ec-title"><span class="enum" style="background:var(--m)">③</span>지속 학습·업데이트</div><div class="ec-body">새 봇 패턴 탐지 시 로컬 재학습 후 가중치 전송으로 글로벌 모델 빠르게 갱신.</div></div>
+    <div class="ec"><div class="ec-title"><span class="enum" style="background:var(--acc)">④</span>데이터 주권 보호</div><div class="ec-body">원본 데이터 외부 미전송. 영업기밀 노출 없이 공동 대응 가능한 유일한 구조.</div></div>
   </div>
 
-  <h3 style="font-size:.9rem;font-weight:700;margin:2rem 0 .35rem">차별점 — 왜 연합학습이어야 하는가?</h3>
-  <div style="overflow-x:auto">
+  <div style="overflow-x:auto;margin-top:1.2rem">
     <table class="cmp">
-      <thead><tr><th></th><th>단독 플랫폼 모델</th><th>중앙 집중식 학습</th><th class="ca">연합학습 (본 시나리오)</th></tr></thead>
+      <thead><tr><th></th><th>단독 플랫폼</th><th>중앙 집중</th><th class="ca">연합학습 (본 시나리오)</th></tr></thead>
       <tbody>
-        <tr><td class="rl">봇 탐지 범위</td><td>자사 봇만 탐지</td><td>전 플랫폼 가능</td><td class="ca"><span class="ck">✓</span> 전 플랫폼 가능</td></tr>
-        <tr><td class="rl">데이터 공유</td><td>불필요</td><td>원본 공유 필요</td><td class="ca"><span class="ck">✓</span> 가중치만 공유</td></tr>
-        <tr><td class="rl">개인정보 보호</td><td>가능</td><td><span class="cx">✗</span> 침해 위험</td><td class="ca"><span class="ck">✓</span> 완전 보호</td></tr>
-        <tr><td class="rl">영업기밀 보호</td><td>가능</td><td><span class="cx">✗</span> 노출 위험</td><td class="ca"><span class="ck">✓</span> 완전 보호</td></tr>
+        <tr><td class="rl">봇 탐지 범위</td><td>자사만</td><td>전체 가능</td><td class="ca"><span class="ck">✓</span> 전체 가능</td></tr>
+        <tr><td class="rl">데이터 공유</td><td>불필요</td><td>원본 필요</td><td class="ca"><span class="ck">✓</span> 가중치만</td></tr>
+        <tr><td class="rl">개인정보·영업기밀</td><td>보호</td><td><span class="cx">✗</span> 위험</td><td class="ca"><span class="ck">✓</span> 완전 보호</td></tr>
         <tr><td class="rl">스키마 충돌</td><td>없음</td><td><span class="cx">✗</span> 발생</td><td class="ca"><span class="ck">✓</span> 우회 가능</td></tr>
-        <tr><td class="rl">봇 수법 대응</td><td>느린 단독 대응</td><td>가능하나 법적 제약</td><td class="ca"><span class="ck">✓</span> 빠른 공동 갱신</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="hl"><b>결론:</b> 단독 모델은 자사 봇만 알고, 중앙 집중은 영업적·법적·기술적으로 3중 불가. 연합학습만이 데이터 주권 보호 + 전 플랫폼 공동 대응 + 지속 업데이트를 동시에 실현하는 유일한 방법이다.</div>
-</div></section>
+  <div class="hl"><b>결론:</b> 연합학습만이 데이터 주권 보호 + 전 플랫폼 공동 대응 + 지속 업데이트를 동시에 실현하는 유일한 방법이다.</div>
+</div>
 
-<footer>중간고사 과제 발표 · 연합학습(Federated Learning) · 온라인 티켓 플랫폼 암표 봇 탐지 AI 시나리오</footer>
+<div style="text-align:center;font-size:.68rem;color:var(--hint);margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--bd)">중간고사 과제 발표 · 연합학습(Federated Learning) · 온라인 티켓 플랫폼 암표 봇 탐지 AI</div>
+
 </body>
 </html>
